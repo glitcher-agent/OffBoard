@@ -1,6 +1,10 @@
 import streamlit as st
 
-st.title("🎈 My new app")
+
+SLACK_BOT_TOKEN = st.secrets["SLACK_BOT_TOKEN"]
+print(SLACK_BOT_TOKEN)
+
+st.title("Offboarding Bot Server"+ SLACK_BOT_TOKEN)
 st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Server Running🔥)."
 )
