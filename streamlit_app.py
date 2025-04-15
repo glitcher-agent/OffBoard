@@ -99,7 +99,7 @@ def send_offboarding_email(to_email, user_name):
 """
 
 
-    msg = MIMEText(body,"html")
+    message = MIMEText(body,"html")
     message["Subject"] = subject
     message["From"] = from_email
     message["To"] = to_email
