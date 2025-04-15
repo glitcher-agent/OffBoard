@@ -105,7 +105,7 @@ def send_offboarding_email(to_email, user_name):
     message["To"] = to_email
 
     # Attach HTML body
-    message.attach(MIMEText(html_body, "html"))
+    message.attach(MIMEText(body, "html"))
 
     try:
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
