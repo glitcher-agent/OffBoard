@@ -13,6 +13,8 @@ from slack_sdk.socket_mode.response import SocketModeResponse
 from slack_sdk.errors import SlackApiError
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 import os
 import streamlit as st
 
@@ -69,7 +71,7 @@ def send_offboarding_email(to_email, user_name):
     <body>
         <p>Hello {user_name},</p>
 
-        <p>We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to me. Thank you again, and feel free to return in the future!</p>
+        <p>We certainly appreciate your time working with us. Please complete a few steps first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to me. Thank you again, and feel free to return in the future!</p>
 
         <p><strong>Steps to complete:</strong></p>
         <ul>
