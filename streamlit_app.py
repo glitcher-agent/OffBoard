@@ -66,17 +66,23 @@ def send_offboarding_email(to_email, user_name):
     
     body =f"""
 Hello {user_name},
-Thank you for reaching out. Please follow these steps to complete your offboarding:
+We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to me. Thank you again, and feel free to return in the future!
+Inform your team leader of your decision to offboard
+    - Craft a resignation letter to HR (Elle Scott) here: hr@cdreams.org
+    - Return company property, including e-data (if applicable)
+    - Conclude outstanding projects and tasks
+    - Offboard yourself from systems and tools (log out of all CDF-related platforms on an agreed-upon date)
+    - Provide your end date (final day working with CDF)
+    - Complete Exit Survey
 
-    1. Inform your team leader.
-    2. Send a resignation letter to hr@cdreams.org.
-    3. Return all company property.
-    4. Finish outstanding tasks.
-    5. Log out of all CDF systems.
-    6. Provide your final working day.
-    7. Complete the Exit Survey here: [Exit Survey Link]
+Additionally, if you require an experience letter, kindly have your TL reach out to me directly via slack with the following:
+NOTE: Experience letters will only be provided for those who worked/contributed to the organization.
+    - Start Date to End Date
+    - Mention primary domain or department, e.g., project management, software development, data engineering, sustainability consulting, etc.Role.
+    - Key contributions and achievements. 1–4 points
 
     Thank you!
+    HR Team.
     """
 
     msg = MIMEText(body)
