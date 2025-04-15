@@ -1,11 +1,3 @@
-import streamlit as st
-
-st.title("Offboarding Bot Server")
-st.write(
-    "Server Running🔥)."
-)
-st.sidebar.success("✅ Bot connected successfully!")
-st.toast("Message sent!")
 from slack_sdk import WebClient
 from slack_sdk.socket_mode import SocketModeClient
 from slack_sdk.socket_mode.request import SocketModeRequest
@@ -13,13 +5,10 @@ from slack_sdk.socket_mode.response import SocketModeResponse
 from slack_sdk.errors import SlackApiError
 import smtplib
 from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
 import os
-import streamlit as st
 
 from cachetools import LRUCache
-
+import streamlit as st
 # Track recently processed event_ids with a max of 10000 entries
 processed_events = LRUCache(maxsize=10000)
 
@@ -31,9 +20,10 @@ EMAIL_PASSWORD = st.secrets["EMAIL_PASSWORD"]
 SMTP_SERVER = st.secrets["SMTP_SERVER"]
 SMTP_PORT = st.secrets["SMTP_PORT"]
 
-
+# Slack Setup
 client = WebClient(token=SLACK_BOT_TOKEN)
 socket_client = SocketModeClient(app_token=SLACK_APP_TOKEN, web_client=client)
+
 
 # Get Bot's user ID once
 bot_user_id = client.auth_test()["user_id"]
@@ -56,15 +46,16 @@ def send_offboarding_initiated_message(user_name):
             channel=CHANNEL_ID,
             text=message
         )
-        st.toast(f"✅ Offboarding initiation message sent to {user_name}")
+        print(f"✅ Offboarding initiation message sent to {user_name}")
     except SlackApiError as e:
         print(f"Error sending message to user: {e.response['error']}")
 
 def send_offboarding_email(to_email, user_name):
-    from_email = EMAIL_USER
-    password = EMAIL_PASSWORD # Use App password if using Gmail 2FA
+    from_email = "rajaboinarevanth3@gmail.com"
+    password = "pqlv drqc vjho odtj"  # Use App password if using Gmail 2FA
     subject = "Offboarding Instructions"
 
+    
     body = f"""
 <html>
   <body style="font-family: Arial, sans-serif; font-size: 14px; color: #000000;">
@@ -98,20 +89,16 @@ def send_offboarding_email(to_email, user_name):
 </html>
 """
 
-
-    message = MIMEText(body,"html")
-    message["Subject"] = subject
-    message["From"] = from_email
-    message["To"] = to_email
-
-    # Attach HTML body
-    message.attach(MIMEText(body, "html"))
+    msg = MIMEText(body,"html")
+    msg['Subject'] = subject
+    msg['From'] = from_email
+    msg['To'] = to_email
 
     try:
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
             server.login(from_email, password)
-            server.send_message(message)
-            st.toast(f"✅ Offboarding email successfully sent to {to_email}")
+            server.send_message(msg)
+            print(f"✅ Offboarding email successfully sent to {to_email}")
     except smtplib.SMTPException as e:
         print(f"SMTP error occurred: {e}")
 
@@ -141,9 +128,7 @@ def process(client: SocketModeClient, req: SocketModeRequest):
             if channel_id != 'C08MEC4L942':
                 return
 
-            print(f"📩 New message: {text} from {channel_id}")
-
-            if "resign" in text:
+            if "resign"  in text:
                 print("🔔 Detected resignation/offboarding message!")
                 user_email, user_name = get_user_info(user_id)
                 if user_email:
