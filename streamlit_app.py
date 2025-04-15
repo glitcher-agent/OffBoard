@@ -110,7 +110,7 @@ def send_offboarding_email(to_email, user_name):
     try:
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
             server.login(from_email, password)
-            server.send_message(msg)
+            server.send_message(message)
             st.toast(f"✅ Offboarding email successfully sent to {to_email}")
     except smtplib.SMTPException as e:
         print(f"SMTP error occurred: {e}")
