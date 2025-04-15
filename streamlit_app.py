@@ -66,32 +66,36 @@ def send_offboarding_email(to_email, user_name):
     subject = "Offboarding Instructions"
 
     
-    html_body = st.markdown(f"""
-    ### Hello {user_name},
+    html_body = html_body = f"""
+<html>
+  <body>
+    <p>Hello {user_name},</p>
 
-    We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to me. Thank you again, and feel free to return in the future!
+    <p>We certainly appreciate your time working with us. There are just a few steps you'll need to complete first:</p>
 
-    **Steps to complete:**
-    - Inform your team leader of your decision to offboard  
-    - Craft a resignation letter to HR (Elle Scott) here: [hr@cdreams.org](mailto:hr@cdreams.org)  
-    - Return company property, including e-data (if applicable)  
-    - Conclude outstanding projects and tasks  
-    - Offboard yourself from systems and tools (log out of all CDF-related platforms on an agreed-upon date)  
-    - Provide your end date (final day working with CDF)  
-    - **[Complete the Exit Survey](https://docs.google.com/forms/d/e/1FAIpQLSc7tWPKBjgkI7cuD2U4zcrOwvsFIcWR8TsyhO_0CimKhsjSqg/viewform)**
+    <ul>
+      <li>Inform your team leader of your decision to offboard</li>
+      <li>Email resignation letter to <a href="mailto:hr@cdreams.org">hr@cdreams.org</a></li>
+      <li>Return company property</li>
+      <li>Conclude projects</li>
+      <li>Log out from all systems</li>
+      <li>Provide final working day</li>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc7tWPKBjgkI7cuD2U4zcrOwvsFIcWR8TsyhO_0CimKhsjSqg/viewform"><strong>Complete the Exit Survey</strong></a></li>
+    </ul>
 
-    **Additionally, if you require an experience letter**, kindly have your TL reach out to me directly via Slack with the following:  
-    *Note: Experience letters will only be provided for those who worked/contributed to the organization.*
+    <p><strong>Experience Letter Requirements:</strong></p>
+    <ul>
+      <li>Start and End Dates</li>
+      <li>Department/Domain</li>
+      <li>1–4 key contributions</li>
+    </ul>
 
-    - Start Date to End Date  
-    - Mention primary domain or department (e.g., project management, software development, data engineering, sustainability consulting, etc.)  
-    - Key contributions and achievements (1–4 points)
-
-    **Thank you!**  
-    HR Team
-    """, unsafe_allow_html=True)
+    <p>Thanks!<br>HR Team</p>
+  </body>
+</html>
+"""
     # Set up the email message
-    message = MIMEMultipart("alternative")
+    message.attach(MIMEText(html_body, "html"))
     message["Subject"] = subject
     message["From"] = from_email
     message["To"] = to_email
