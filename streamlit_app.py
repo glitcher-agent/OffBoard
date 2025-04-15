@@ -64,31 +64,46 @@ def send_offboarding_email(to_email, user_name):
     subject = "Offboarding Instructions"
 
     
-    body =f"""
-Hello {user_name},
-We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to me. Thank you again, and feel free to return in the future!
-Inform your team leader of your decision to offboard
-    - Craft a resignation letter to HR (Elle Scott) here: hr@cdreams.org
-    - Return company property, including e-data (if applicable)
-    - Conclude outstanding projects and tasks
-    - Offboard yourself from systems and tools (log out of all CDF-related platforms on an agreed-upon date)
-    - Provide your end date (final day working with CDF)
-    - Complete Exit Survey
+    html_body =f"""
+    <html>
+    <body>
+        <p>Hello {user_name},</p>
 
-Additionally, if you require an experience letter, kindly have your TL reach out to me directly via slack with the following:
-NOTE: Experience letters will only be provided for those who worked/contributed to the organization.
-    - Start Date to End Date
-    - Mention primary domain or department, e.g., project management, software development, data engineering, sustainability consulting, etc.Role.
-    - Key contributions and achievements. 1–4 points
+        <p>We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to me. Thank you again, and feel free to return in the future!</p>
 
-    Thank you!
-    HR Team.
+        <p><strong>Steps to complete:</strong></p>
+        <ul>
+            <li>Inform your team leader of your decision to offboard</li>
+            <li>Craft a resignation letter to HR (Elle Scott) here: <a href="mailto:hr@cdreams.org">hr@cdreams.org</a></li>
+            <li>Return company property, including e-data (if applicable)</li>
+            <li>Conclude outstanding projects and tasks</li>
+            <li>Offboard yourself from systems and tools (log out of all CDF-related platforms on an agreed-upon date)</li>
+            <li>Provide your end date (final day working with CDF)</li>
+            <li>Complete the Exit Survey: <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7tWPKBjgkI7cuD2U4zcrOwvsFIcWR8TsyhO_0CimKhsjSqg/viewform">Exit Survey Link</a></li>
+        </ul>
+
+        <p><strong>Additionally, if you require an experience letter</strong>, kindly have your TL reach out to me directly via Slack with the following:<br>
+        <em>Note: Experience letters will only be provided for those who worked/contributed to the organization.</em></p>
+        <ul>
+            <li>Start Date to End Date</li>
+            <li>Mention primary domain or department (e.g., project management, software development, data engineering, sustainability consulting, etc.)</li>
+            <li>Key contributions and achievements (1–4 points)</li>
+        </ul>
+
+        <p>Thank you!<br>
+        HR Team.</p>
+    </body>
+    </html>
     """
 
-    msg = MIMEText(body)
-    msg['Subject'] = subject
-    msg['From'] = from_email
-    msg['To'] = to_email
+    # Set up the email message
+    message = MIMEMultipart("alternative")
+    message["Subject"] = subject
+    message["From"] = from_email
+    message["To"] = to_email
+
+    # Attach HTML body
+    message.attach(MIMEText(html_body, "html"))
 
     try:
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
