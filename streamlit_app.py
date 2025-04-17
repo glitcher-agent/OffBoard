@@ -51,8 +51,8 @@ def send_offboarding_initiated_message(user_name):
         print(f"Error sending message to user: {e.response['error']}")
 
 def send_offboarding_email(to_email, user_name):
-    from_email = "rajaboinarevanth3@gmail.com"
-    password = "pqlv drqc vjho odtj"  # Use App password if using Gmail 2FA
+    from_email = EMAIL_USER
+    password = EMAIL_PASSWORD  # Use App password if using Gmail 2FA
     subject = "Offboarding Instructions"
 
     
