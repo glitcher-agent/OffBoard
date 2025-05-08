@@ -61,23 +61,21 @@ def send_offboarding_email(to_email, user_name):
   <body style="font-family: Arial, sans-serif; font-size: 14px; color: #000000;">
     <p>Hello {user_name},</p>
 
-    <p>We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to HR Team. Thank you again, and feel free to return in the future!</p>
+    <p>We certainly appreciate your time working with us. There are just a few steps you'll need to complete first, which you'll find listed below. Please ignore any steps that you may have already completed. If you have any questions, don't hesitate to reach out to the HR Team.</p>
 
     <ul>
-      <li>Inform your team leader or POC of your decision to offboard</li>
-      <li>Craft a resignation letter to HR Team here: <a href="mailto:hr@cdreams.org">hr@cdreams.org</a></li>
-      <li>Return company property, including e-data (if applicable)</li>
-      <li>Conclude outstanding projects and tasks</li>
-      <li>Offboard yourself from systems and tools (log out of all CDF-related platforms on an agreed-upon date)</li>
-      <li>Provide your end date (final day working with CDF)</li>
-      <li>Complete <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7tWPKBjgkI7cuD2U4zcrOwvsFIcWR8TsyhO_0CimKhsjSqg/viewform" target="_blank">Exit Survey</a></li>
+      <li>Inform your team leader or Point of Contact (POC) of your decision to offboard</li>
+      <li>Craft and send a resignation letter to the HR Team at: <a href="mailto:hr@cdreams.org">hr@cdreams.org</a></li>
+      <li>Return access or permissions from any tools, email accounts, drives, etc., and hand them over to your lead</li>
+      <li>Conclude all outstanding projects and tasks</li>
+      <li>Offboard yourself from all CDF-related systems and tools (log out on the agreed-upon date)</li>
+      <li>Provide your official end date (final working day with CDF)</li>
+      <li>Complete the <a href="https://docs.google.com/forms/d/e/1FAIpQLSci_4uN20RO3vkmcA7nacPIjAw4epJM2sAC0_VjDe0edg9TWg/viewform" target="_blank">Exit Survey</a> <strong>(Mandatory)</strong></li>
     </ul>
 
-   
-    
     <p>Thank you!</p>
-    <p>Human Resources</p>
-    <p>Community Dreams Foundation</p>
+    <p><strong>Human Resources</strong><br>
+    Community Dreams Foundation</p>
   </body>
 </html>
 """
