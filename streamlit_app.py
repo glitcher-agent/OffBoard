@@ -28,6 +28,10 @@ socket_client = SocketModeClient(app_token=SLACK_APP_TOKEN, web_client=client)
 # Get Bot's user ID once
 bot_user_id = client.auth_test()["user_id"]
 
+st.write("App is running...")
+    time.sleep(10)  # simulate activity
+    st.experimental_rerun()
+
 def get_user_info(slack_user_id):
     try:
         user_info = client.users_info(user=slack_user_id)
