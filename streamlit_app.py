@@ -67,7 +67,7 @@ def send_offboarding_email(to_email, user_name):
 
     <ul>
       <li>Inform your team leader or Point of Contact (POC) of your decision to offboard</li>
-      <li>Craft and send a resignation letter to the HR Team at: <a href="mailto:hr@cdreams.org">humanresources@cdreams.org</a></li>
+      <li>Craft and send a resignation letter to the HR Team at: <a href="mailto:humanresources@cdreams.org">humanresources@cdreams.org</a></li>
       <li>Return access or permissions from any tools, email accounts, drives, etc., and hand them over to your lead</li>
       <li>Conclude all outstanding projects and tasks</li>
       <li>Offboard yourself from all CDF-related systems and tools (log out on the agreed-upon date)</li>
