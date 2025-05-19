@@ -28,8 +28,6 @@ socket_client = SocketModeClient(app_token=SLACK_APP_TOKEN, web_client=client)
 # Get Bot's user ID once
 bot_user_id = client.auth_test()["user_id"]
 
-
-
 def get_user_info(slack_user_id):
     try:
         user_info = client.users_info(user=slack_user_id)
@@ -82,6 +80,8 @@ def send_offboarding_email(to_email, user_name):
 </html>
 """
 
+
+
     msg = MIMEText(body,"html")
     msg['Subject'] = subject
     msg['From'] = from_email
@@ -115,13 +115,15 @@ def process(client: SocketModeClient, req: SocketModeRequest):
             user_id = event.get('user')
             channel_id = event.get('channel')
 
-            # Skip bot's own messages
-            if user_id is None or user_id == bot_user_id:
-                return
-            if channel_id != 'C08MEC4L942':
-                return
+            # # Skip bot's own messages
+            # if user_id is None or user_id == bot_user_id:
+            #     return
+            # if channel_id != 'C08MEC4L942':
+            #     return
 
-            if "resign"  in text:
+            print(f"📩 New message: {text} from {channel_id}")
+
+            if "resign" in text:
                 print("🔔 Detected resignation/offboarding message!")
                 user_email, user_name = get_user_info(user_id)
                 if user_email:
