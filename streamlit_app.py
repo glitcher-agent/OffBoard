@@ -116,10 +116,10 @@ def process(client: SocketModeClient, req: SocketModeRequest):
             channel_id = event.get('channel')
 
             # # Skip bot's own messages
-            # if user_id is None or user_id == bot_user_id:
-            #     return
-            # if channel_id != 'C08MEC4L942':
-            #     return
+            if user_id is None or user_id == bot_user_id:
+                return
+            if channel_id != 'C08MEC4L942':
+                return
 
             print(f"📩 New message: {text} from {channel_id}")
 
